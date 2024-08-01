@@ -12,7 +12,7 @@ class User_model(AbstractUser):
 class Student(models.Model):
     user = models.ForeignKey(User_model,on_delete=models.CASCADE)
     name = models.CharField(max_length=250)
-    student_id = models.IntegerField()
+    student_id = models.IntegerField(blank=True,null=True)
     bio = models.TextField()
 
 

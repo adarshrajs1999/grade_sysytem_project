@@ -1,0 +1,13 @@
+{% extends 'register_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="POST" style="width:100%;">
+    {% csrf_token %}
+    {{user_register_form_object|crispy}}
+    {{student_register_form_object|crispy}}
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% endblock %}

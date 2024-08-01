@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from grade_app.models import User_model
+from grade_app.models import User_model,Student
+
 
 class User_register_form(UserCreationForm):
     username = forms.CharField()
@@ -10,6 +11,11 @@ class User_register_form(UserCreationForm):
         model = User_model
         fields = ('username','password1','password2')
 
+class Student_register_form(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ('__all__')
+        exclude = ('user','student_id')
 
 
 
