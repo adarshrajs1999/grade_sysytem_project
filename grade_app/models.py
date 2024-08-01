@@ -9,6 +9,11 @@ class User_model(AbstractUser):
     is_student = models.BooleanField(default=False)
 
 
+class Teacher(models.Model):
+    user = models.ForeignKey(User_model,on_delete=models.CASCADE)
+    name = models.CharField(max_length=250)
+     
+
 class Student(models.Model):
     user = models.ForeignKey(User_model,on_delete=models.CASCADE)
     name = models.CharField(max_length=250)

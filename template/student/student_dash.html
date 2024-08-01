@@ -80,7 +80,7 @@
                     <a href="  " class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>View products</a>
                        <a href="  " class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>View orders</a>
                     <a href="  " class="nav-item nav-link"><i class="fa fa-table me-2"></i>View customers feedbacks</a>
-                    <a href="  " class="nav-item nav-link" onclick="confirm_logout()"><i class="fa fa-table me-2"></i>Logout</a>
+                    <a href="{% url 'logout_view' %}" class="nav-item nav-link" onclick="confirm_logout()"><i class="fa fa-table me-2"></i>Logout</a>
 
 
                     <div class="nav-item dropdown">
@@ -185,7 +185,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
 <!--                            <a href="#" class="dropdown-item">My Profile</a>-->
 <!--                            <a href="#" class="dropdown-item">Settings</a>-->
-                            <form action="" method="post" style="display:inline;" onsubmit="confirm_logout()" class="dropdown-item">
+                            <form action="{% url 'logout_view' %}" method="post" style="display:inline;" onsubmit="confirm_logout()" class="dropdown-item">
                                 {% csrf_token %}
                                 <button type="submit" style="background-color:transparent; color:inherit; border:none; padding:0;font:inherit; cursor:pointer; outline:none;">
                                     Logout

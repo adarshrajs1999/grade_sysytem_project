@@ -5,6 +5,7 @@
 
 <form method="POST" style="width:100%;">
     {% csrf_token %}
+    {{teacher_register_form_object|crispy}}
     {{user_register_form_object|crispy}}
     <button type="submit" class="btn btn-success">Submit</button>
 </form>

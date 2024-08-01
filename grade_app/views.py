@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from grade_app.forms import User_register_form,Student_register_form
+from grade_app.forms import User_register_form,Student_register_form,Teacher_register_form
 from grade_app.models import User_model
 from django.contrib.auth import authenticate,login,logout
 
@@ -25,14 +25,20 @@ def student_dash(request):
 
 def teacher_register(request):
     user_register_form_object = User_register_form()
+    teacher_register_form_object = Teacher_register_form()
     if request.method == 'POST':
         user_register_form_object = User_register_form(request.POST)
-        if user_register_form_object.is_valid():
+        teacher_register_form_object = Teacher_register_form(request.POST)
+        if user_register_form_object.is_valid() and teacher_register_form_object.is_valid():
             user_model_object = user_register_form_object.save(commit=False)
             user_model_object.is_teacher = True
             user_model_object.save()
+            teacher_object = teacher_register_form_object.save(commit=False)
+            teacher_object.user = user_model_object
+            teacher_object.save()
             return redirect('/')
-    return render(request,'teacher_register.html',{'user_register_form_object':user_register_form_object})
+    return render(request,'teacher_register.html',{'user_register_form_object':user_register_form_object,'teacher_register_form_object':teacher_register_form_object})
+
 
 def student_register(request):
     student_register_form_object = Student_register_form()
@@ -50,6 +56,7 @@ def student_register(request):
             return redirect('/')
     return render(request, 'student_register.html',{'user_register_form_object':user_register_form_object,'student_register_form_object':student_register_form_object})
 
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -63,3 +70,6 @@ def login_view(request):
                 return redirect('student_dash')
     return render(request, 'login.html')
 
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')
