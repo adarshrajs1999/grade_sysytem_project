@@ -14,7 +14,8 @@ urlpatterns = [
     path('teacher_view_student_details/',teacher_views.teacher_view_student_details,name='teacher_view_student_details'),
     path('teacher_update_student_details/<int:id>/',teacher_views.teacher_update_student_details,name='teacher_update_student_details'),
     path('teacher_delete_student_details/<int:id>/',teacher_views.teacher_delete_student_details,name='teacher_delete_student_details'),
-    path('teacher_create_course/',teacher_views.teacher_create_course,name='teacher_create_course')
+    path('teacher_create_course/',teacher_views.teacher_create_course,name='teacher_create_course'),
+    path('teacher_create_grade/',teacher_views.teacher_create_grade,name='teacher_create_grade')
     
     
 

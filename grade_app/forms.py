@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from grade_app.models import User_model,Student,Teacher,Course
+from grade_app.models import User_model,Student,Teacher,Course,Grade
 
 
 class User_register_form(UserCreationForm):
@@ -34,6 +34,12 @@ class Teacher_create_course_form(forms.ModelForm):
     class Meta:
         model = Course
         fields = ('__all__')
+
+class Teacher_create_grade_form(forms.ModelForm):
+    class Meta:
+        model = Grade
+        fields = ('__all__')
+        
 
 
 
