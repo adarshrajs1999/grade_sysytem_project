@@ -22,7 +22,6 @@ class Student(models.Model):
 
 
 class Course(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='course_student')
     course_code = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
     description = models.TextField()
