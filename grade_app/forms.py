@@ -40,7 +40,10 @@ class Teacher_create_grade_form(forms.ModelForm):
         model = Grade
         fields = ('__all__')
         
-
+class Course_update_form(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ('__all__')
 
 
 

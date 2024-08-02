@@ -70,6 +70,7 @@ def login_view(request):
                 return redirect('student_dash')
     return render(request, 'login.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('login_view')

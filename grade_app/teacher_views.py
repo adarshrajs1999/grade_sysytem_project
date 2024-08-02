@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Student
-from .forms import Student_update_form,Teacher_create_course_form,Teacher_create_grade_form
+from .models import Student,Course,Grade
+from .forms import Student_update_form,Teacher_create_course_form,Teacher_create_grade_form,Course_update_form
 
 def teacher_view_student_details(request):
     student_objects = Student.objects.all()
@@ -29,6 +29,27 @@ def teacher_create_course(request):
             return redirect('teacher_dash')
     return render(request,'teacher/teacher_create_course.html',{'teacher_create_course_form_object':teacher_create_course_form_object})
 
+
+def teacher_view_courses(request):
+    course_objects = Course.objects.all()
+    return render(request,'teacher/teacher_view_courses.html',{'course_objects':course_objects})
+
+def teacher_update_course(request,id):
+    course_object = Course.objects.get(id = id)
+    course_form_object = Course_update_form(instance=course_object)
+    if request.method == 'POST':
+        course_form_object = Course_update_form(request.POST,instance=course_object)
+        course_form_object.save()
+        return redirect('teacher_view_courses')
+    return render(request, 'teacher/teacher_update_course.html',{'course_form_object':course_form_object})
+
+
+def teacher_delete_course(request, id):
+    course_object = Course.objects.get(id=id)
+    course_object.delete()
+    return redirect('teacher_view_courses')
+
+
 def teacher_create_grade(request):
     teacher_create_grade_form_object = Teacher_create_grade_form()
     if request.method == 'POST':
@@ -37,4 +58,9 @@ def teacher_create_grade(request):
             teacher_create_grade_form_object.save()
             return redirect('teacher_dash')
     return render(request,'teacher/teacher_create_grade.html',{'teacher_create_grade_form_object':teacher_create_grade_form_object})
+
+def teacher_view_grades(request):
+    grade_objects = Grade.objects.all()
+    return render(request,'teacher/teacher_view_grades.html',{'grade_objects':grade_objects})
+
 
