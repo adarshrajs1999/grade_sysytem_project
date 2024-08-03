@@ -33,6 +33,7 @@ class Grade(models.Model):
     grade = models.CharField(max_length=10)
     semester = models.CharField(max_length=2)
     year = models.CharField(max_length=4)
+    grade_credits_dictionary = {'a':4,'b':3,'c':2,'d':1}
 
 
 

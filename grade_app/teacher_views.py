@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Student,Course,Grade
-from .forms import Student_update_form,Teacher_create_course_form,Teacher_create_grade_form,Course_update_form,Grade_update_form
+from .forms import Teacher_student_update_form,Teacher_create_course_form,Teacher_create_grade_form,Course_update_form,Grade_update_form
 
 def teacher_view_student_details(request):
     student_objects = Student.objects.all()
@@ -8,12 +8,12 @@ def teacher_view_student_details(request):
 
 def teacher_update_student_details(request,id):
     student_object = Student.objects.get(id = id)
-    student_form_object = Student_update_form(instance=student_object)
+    teacher_student_update_form_object = Teacher_student_update_form(instance=student_object)
     if request.method == 'POST':
-        student_form_object = Student_update_form(request.POST,instance=student_object)
-        student_form_object.save()
+        teacher_student_update_form_object = Teacher_student_update_form(request.POST,instance=student_object)
+        teacher_student_update_form_object.save()
         return redirect('teacher_view_student_details')
-    return render(request, 'teacher/teacher_update_student_details.html',{'student_form_object':student_form_object})
+    return render(request, 'teacher/teacher_update_student_details.html',{'teacher_student_update_form_object':teacher_student_update_form_object})
 
 def teacher_delete_student_details(request, id):
     student_object = Student.objects.get(id=id)

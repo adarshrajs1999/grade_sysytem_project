@@ -18,7 +18,7 @@ class Student_register_form(forms.ModelForm):
         fields = ('__all__')
         exclude = ('user','student_id')
 
-class Student_update_form(forms.ModelForm):
+class Teacher_student_update_form(forms.ModelForm):
     class Meta:
         model = Student
         fields = ('__all__')
@@ -45,7 +45,11 @@ class Grade_update_form(forms.ModelForm):
         model = Grade
         fields = ('__all__')
 
-
+class Student_profile_update_form(forms.ModelForm):
+    student_id = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    class Meta:
+        model = Student
+        fields = ('__all__')
 
 
 

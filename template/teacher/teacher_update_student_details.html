@@ -5,7 +5,7 @@
 
 <form method="POST" style="width:100%;">
     {% csrf_token %}
-    {{student_form_object|crispy}}
+    {{teacher_student_update_form_object|crispy}}
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
