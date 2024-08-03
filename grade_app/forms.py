@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from grade_app.models import User_model,Student,Course,Grade
+from django.contrib.auth.models import User
+from grade_app.models import Student,Course,Grade
 
 
 class User_register_form(UserCreationForm):
@@ -8,7 +9,7 @@ class User_register_form(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput) 
     class Meta:
-        model = User_model
+        model = User
         fields = ('username','password1','password2')
 
 

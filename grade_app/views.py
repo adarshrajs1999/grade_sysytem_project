@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from grade_app.forms import User_register_form,Student_register_form
-from grade_app.models import User_model
 from django.contrib.auth import authenticate,login,logout
 
 
@@ -49,7 +48,7 @@ def login_view(request):
             login(request,user_object)
             if user_object.is_staff:
                 return redirect('teacher_dash')
-            elif user_object.is_student:
+            else:
                 return redirect('student_dash')
     return render(request, 'login.html')
 
