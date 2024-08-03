@@ -30,6 +30,7 @@ class Teacher_create_course_form(forms.ModelForm):
         fields = ('__all__')
 
 class Teacher_create_grade_form(forms.ModelForm):
+    grade = forms.CharField(label = 'Grade as any one of A,B,C,D,E' ,widget=forms.TextInput())
     class Meta:
         model = Grade
         fields = ('__all__')
