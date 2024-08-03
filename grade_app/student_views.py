@@ -14,3 +14,12 @@ def student_view_update_profile_details(request):
 def student_view_grades(request):
     grade_objects = Grade.objects.filter(student__user = request.user)
     return render(request,'student/student_view_grades.html',{'grade_objects':grade_objects})
+
+def student_calculate_gpa(request):
+    grade_credicts_dictionary = {'a':4,'b':3,'c':2,'d':1,'e':0}
+    grade_objects = Grade.objects.filter(student__user = request.user)
+    grades_tuple = ((i.grade).lower() for i in grade_objects if (i.grade.lower()) in grade_credicts_dictionary)
+    credits_tuple = (grade_credicts_dictionary[i] for i in grades_tuple)
+    credits_sum =sum(credits_tuple)
+    gpa = credits_sum*4
+    return render(request,'student/student_calculate_gpa.html',{'gpa':gpa})

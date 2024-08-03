@@ -22,7 +22,8 @@ urlpatterns = [
     path('teacher_update_grade/<int:id>/',teacher_views.teacher_update_grade,name='teacher_update_grade'),
     path('teacher_delete_grade/<int:id>/',teacher_views.teacher_delete_grade,name='teacher_delete_grade'),
     path('student_view_update_profile_details',student_views.student_view_update_profile_details,name='student_view_update_profile_details'),
-    path('student_view_grades/',student_views.student_view_grades,name='student_view_grades')
+    path('student_view_grades/',student_views.student_view_grades,name='student_view_grades'),
+    path('student_calculate_gpa/',student_views.student_calculate_gpa,name='student_calculate_gpa')
     
         
 ]
