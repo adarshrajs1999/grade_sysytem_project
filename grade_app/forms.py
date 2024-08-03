@@ -50,6 +50,7 @@ class Student_profile_update_form(forms.ModelForm):
     class Meta:
         model = Student
         fields = ('__all__')
+        exclude = ('user',)
 
 
 
