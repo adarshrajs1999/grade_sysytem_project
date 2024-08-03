@@ -1,0 +1,25 @@
+{% extends 'student/student_dash.html' %}
+
+{% block content %}
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">course</th>
+      <th scope="col">semester</th>
+      <th scope="col">year</th>
+      <th scope="col">Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in grade_objects %}
+    <tr>
+      <td>{{i.course}}</td>
+      <td>{{i.semester}}</td>
+      <td>{{i.year}}</td>
+      <td>{{i.grade}}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
