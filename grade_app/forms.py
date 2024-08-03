@@ -39,6 +39,11 @@ class Course_update_form(forms.ModelForm):
         model = Course
         fields = ('__all__')
 
+class Grade_update_form(forms.ModelForm):
+    class Meta:
+        model = Grade
+        fields = ('__all__')
+
 
 
 

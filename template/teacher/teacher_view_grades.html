@@ -21,9 +21,9 @@
       <td>{{i.grade}}</td>
       <td>{{i.semester}}</td>
       <td>{{i.year}}</td>
-      <td><a href=""><button class="btn btn-info">Update</button></a></td>
+      <td><a href="{% url 'teacher_update_grade' i.id %}"><button class="btn btn-info">Update</button></a></td>
       <td>
-          <a href="" class="btn btn-danger">Delete</a>
+          <a href="{% url 'teacher_delete_grade' i.id %}" class="btn btn-danger" onclick="confirm_delete()">Delete</a>
       </td>
 
     </tr>

@@ -1,30 +1,30 @@
 {% extends 'teacher/teacher_dash.html' %}
 
-
 {% block content %}
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">Course code</th>
+      <th scope="col">Course title</th>
+      <th scope="col">Description</th>
+      <th scope="col">update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in course_objects %}
+    <tr>
+       <td>{{i.course_code}}</td>
+      <td>{{i.title}}</td>
+      <td>{{i.description}}</td>
+      <td><a href="{% url 'teacher_update_course' i.id %}"><button class="btn btn-info">Update</button></a></td>
+      <td>
+          <a href="{% url 'teacher_delete_course' i.id %}" class="btn btn-danger" onclick="confirm_delete()">Delete</a>
+      </td>
 
+    </tr>
+  {% endfor %}
 
-<div style="display:grid;grid-template-columns:1fr;grid-gap:20px;">
-
-{% for i in course_objects %}
-
-<div class="card" style="display:grid;grid-template-columns:1fr 1fr;width:550px;height:250px;background-color:#E6E6FA;">
-    <!-- <div style="position:relative;">
-      <img src="{{i.image.url}}" class="img-fluid rounded-start" alt="image not found" style="width:100%;height:100%;position:absolute;top:0;left:0;">
-    </div> -->
-      <div class="card-body">
-        <h5 class="card-title" style="color:green;">{{i.title}}</h5>
-        <p class="card-text text" style="color:brown;" >
-        course title:{{i.course_title}}
-          Course code:{{i.course_code}}<br>
-          description:{{i.description}}<br>
-           <a href="{% url 'teacher_update_course' i.id %}" class="btn btn-info">Update</a>
-           <a href="{% url 'teacher_delete_course' i.id %}" class="btn btn-danger" onclick = 'confirm_delete()'>Delete</a>
-          </p>
-      </div>
-</div>
-
-{% endfor %}
-
-</div>
+  </tbody>
+</table>
 {% endblock %}
